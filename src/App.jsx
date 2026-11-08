@@ -4,6 +4,7 @@ import MyThemeProvider from './context/MyThemeProvider';
 import NavBar from './component/NavBar';
 import AppRoutes from './routes/AppRoutes';
 import { ThemeProvider } from '@mui/material/styles';
+import { GlobalStyles } from "@mui/material"
 import { purpleTheme } from './theme/purpleTheme';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <UserProvider>
         <MyThemeProvider>
           <ThemeProvider theme={purpleTheme}>
+            <GlobalStyles styles={(theme) => theme.customGlobalStyles} />
             <NavBar />
             <AppRoutes />
           </ThemeProvider>

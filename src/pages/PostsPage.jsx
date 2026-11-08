@@ -1,7 +1,7 @@
 import { Outlet, useParams, useSearchParams, Link } from "react-router-dom";
 import { useData } from "../hooks/useData";
 
-import { Card } from "@mui/material"
+import { Card, Grid } from "@mui/material"
 
 export default function PostsPage() {
   
@@ -24,17 +24,31 @@ export function PostList() {
   if (error) return <p>Failed to load</p>;
 
   const postList = postsData?.map?.((post) => (
-    <li key={post.id}>
-      <Link to={"/posts/" + post.id}>
-        Post #{post.id}: {post.title}
-      </Link>
-    </li>
+    <Grid key={post.id} size={{ xs: 6, md: 4 }}>
+      <Card>
+        <Link to={"/posts/" + post.id}>
+          Post #{post.id}: {post.title}
+        </Link>
+      </Card>
+    </Grid>
   ));
 
   return (
     <div>
-      <ul>{postList}</ul>
+      <Grid container columnSpacing={2} rowSpacing={4}>
+      <Grid container columnSpacing={2} rowSpacing={4}>
+      {postList}
+      </Grid>
+      <div>
+      <Link to="/posts?limit=5">Load 5 Posts</Link>
+      </div>
+      <div>
       <Link to="/posts?limit=10">Load 10 Posts</Link>
+      </div>
+      <div>
+      <Link to="/posts?limit=20">Load 20 Posts</Link>
+      </div>
+      </Grid>
     </div>
   );
 }

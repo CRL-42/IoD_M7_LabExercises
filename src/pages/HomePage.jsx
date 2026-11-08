@@ -1,6 +1,3 @@
-// Simple page components for completing the routes
-// ++ Render some existing components on these pages to add content
-
 export default function HomePage() { // Save in pages/Homepage.jsx
 
   return ( 

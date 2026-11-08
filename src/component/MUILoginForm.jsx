@@ -1,7 +1,7 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useUserContext } from "../context/UserContext"
 // Exercise 5.
-import { Button, FormControl, FormLabel, FilledInput, Card } from "@mui/material";
+import { Button, FormControl, FormLabel, FilledInput, Card, Stack } from "@mui/material";
 // Exercise 5 end.
 
 function LoginForm() {
@@ -38,6 +38,7 @@ function LoginForm() {
     return (
     <Card className="LoginForm componentBox">
       <form onSubmit={handleSubmit}>
+        <div>
         <FormControl>
           <FormLabel>
             Email Address:
@@ -52,6 +53,8 @@ function LoginForm() {
               onChange={(e) => setUserEmail(e.target.value)}
             />
         </FormControl>
+        </div>
+        <div>
         <FormControl>
           <FormLabel>
             Password:
@@ -63,10 +66,13 @@ function LoginForm() {
             onChange={(e) => setUserPassword(e.target.value)}
           />
         </FormControl>
+        </div>
+        <div>
         <FormControl>
           <Button type="submit">Log In</Button>
           <p>{submitResult}</p>
         </FormControl>
+        </div>
       </form>
     </Card>
   );
